@@ -11,14 +11,14 @@ module.exports = (() => {
             name: "AutoFullscreen",
             authors: [
                 {
-                    name: "LRush",
+                    name: "YourName",
                     discord_id: "",
-                    github_username: "RushLizard"
+                    github_username: ""
                 }
             ],
             version: "1.0.0",
             description: "Automatically makes Discord fullscreen on startup.",
-            github: "https://github.com/LizardRush/BDPlugins",
+            github: "",
             github_raw: ""
         },
         changelog: [
@@ -54,16 +54,27 @@ module.exports = (() => {
         const plugin = (Plugin, Api) => {
             return class AutoFullscreen extends Plugin {
                 onStart() {
-                    // Wait for Discord to fully load
-                    setTimeout(() => {
-                        const electron = require('electron');
-                        const remote = electron.remote;
-                        remote.getCurrentWindow().maximize();
-                    }, 5000); // Adjust the timeout as needed
+                    this.makeFullscreen();
                 }
 
                 onStop() {
                     // No cleanup needed
+                }
+
+                makeFullscreen() {
+                    try {
+                        const electron = require('electron');
+                        const remote = electron.remote;
+                        const currentWindow = remote.getCurrentWindow();
+                        if (!currentWindow.isMaximized()) {
+                            currentWindow.maximize();
+                            console.log("Discord has been maximized.");
+                        } else {
+                            console.log("Discord is already maximized.");
+                        }
+                    } catch (error) {
+                        console.error("Failed to maximize Discord window:", error);
+                    }
                 }
             };
         };

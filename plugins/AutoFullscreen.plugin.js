@@ -66,12 +66,7 @@ module.exports = (() => {
                         const electron = require('electron');
                         const remote = electron.remote;
                         const currentWindow = remote.getCurrentWindow();
-                        if (!currentWindow.isMaximized()) {
-                            currentWindow.maximize();
-                            console.log("Discord has been maximized.");
-                        } else {
-                            console.log("Discord is already maximized.");
-                        }
+                        currentWindow.maximize();
                     } catch (error) {
                         console.error("Failed to maximize Discord window:", error);
                     }

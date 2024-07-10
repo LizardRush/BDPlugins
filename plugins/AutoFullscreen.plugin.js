@@ -19,4 +19,5 @@ module.exports = class AutoFullscreen {
             remote.getCurrentWindow().maximize();
         }, 5000);
     }
+    stop() {}
 };

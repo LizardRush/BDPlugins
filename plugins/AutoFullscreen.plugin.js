@@ -19,7 +19,7 @@ module.exports = (() => {
             version: "1.0.0",
             description: "Automatically makes Discord fullscreen on startup.",
             github: "",
-            github_raw: ""
+            github_raw: "https://raw.githubusercontent.com/LizardRush/BDPlugins/main/plugins/AutoFullscreen.plugin.js"
         },
         changelog: [
             {

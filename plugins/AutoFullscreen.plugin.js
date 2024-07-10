@@ -17,7 +17,10 @@ module.exports = class AutoFullscreen {
             const electron = require('electron');
             const remote = electron.remote;
             remote.getCurrentWindow().maximize();
-        }, 5000);
+        }, 5000); // Adjust the timeout as needed
     }
-    stop() {}
+
+    stop() {
+        getName();
+    }
 };
